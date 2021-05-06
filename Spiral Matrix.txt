@@ -1,0 +1,72 @@
+// print all the elements in the SPIRAL ORDER
+/* 1 2 3
+   4 5 6
+   7 8 9
+   10 11 12
+
+   OUTPUT-- 1 2 3 6 9 12 11 10 7 4
+class Solution
+{
+    public List<Integer> spiralOrder(int[][] matrix) 
+    {
+        
+        int top=0;
+        int down=matrix.length-1;;
+        int left=0;
+        int right=matrix[0].length-1;
+        
+//         for(int i=0;i<matrix.length;i++)
+//         {
+            
+//         }
+        
+        List<Integer> list=new ArrayList<Integer>();
+        
+        int dir=0;
+        int k=0;
+        while(top<=down && left<=right)
+        {
+            if(dir==0)  //left to right
+            {
+                for(int i=left;i<=right;i++)
+                {
+                    list.add(matrix[top][i]);
+                }
+                top=top+1;
+            }
+            else if(dir==1) //top to bottom
+            {
+                for(int i=top;i<=down;i++)
+                {
+                    list.add(matrix[i][right]);
+                }
+                right=right-1;
+            }
+            
+            else if(dir==2) //right to left
+            {
+                for(int i=right;i>=left;i--)
+                {
+                    list.add(matrix[down][i]);
+                }
+                down=down-1;
+                
+            }
+            
+            else if(dir==3) // bottom to top
+            {
+                for(int i=down;i>=top;i--)
+                {
+                    list.add(matrix[i][left]);
+                }
+                left=left+1;
+            }
+            
+            dir=(dir+1)%4;
+            
+        }
+        
+        return list;
+        
+    }
+}
