@@ -1,0 +1,69 @@
+class Solution 
+{
+    public int search(int[] nums, int target) 
+    {
+        int index=-1;
+        if(nums.length==1)
+        {
+            if(nums[0]==target)
+            {
+                return 0;
+            }
+            else
+                return -1;
+        }
+        else          //index of minimum element
+        {
+            for(int i=1;i<nums.length;i++)
+            {
+                if(nums[i]<nums[i-1])
+                {
+                    index=i;
+                }
+            }
+            
+            
+            if(index==-1)       //normal array is there
+            {
+                index=nums.length;
+                int result=binarysearch(nums,0,index-1,target);
+            }
+                
+            
+            int result=binarysearch(nums,0,index-1,target);
+            int result1=binarysearch(nums,index,nums.length-1,target);
+        
+            if(result==-1 && result1==-1)
+            {
+                return -1;
+            }
+        
+            else
+            {
+                return Math.max(result,result1);
+            }
+        }
+        
+    }
+        
+        // return binary(nums,0,nums.length-1,target);
+        public int binarysearch(int nums[],int start,int end,int target)
+        {
+            
+            while(start<=end)
+            {
+                int mid=start+(end-start)/2;
+                if(nums[mid]==target)
+                {
+                    return mid;
+                
+                }
+                else if(nums[mid]>target)
+                    end=mid-1;
+                else
+                    start=mid+1;
+            }
+            
+            return -1;   
+        }
+}
