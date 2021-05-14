@@ -1,0 +1,26 @@
+class StockSpanner 
+{
+    Stack<Integer> stock=new Stack<>();
+    Stack<Integer> day=new Stack<>();
+    public StockSpanner() 
+    {
+        
+    }
+    
+    public int next(int price) 
+    {
+        int count=1;
+        while(!stock.empty() && stock.peek()<=price)
+        {
+            stock.pop();
+            count=count+day.pop();
+            
+            
+        }
+        
+        stock.add(price);
+        day.add(count);
+        return count;
+        
+    }
+}
