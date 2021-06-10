@@ -1,0 +1,153 @@
+public class Main
+{
+    public static class LinkedList
+    {
+        public static class Node
+        {
+            int data;
+            Node next;
+
+        }
+        Node head;
+        Node tail;
+        int size;
+
+        public void addLast(int val)
+        {
+            Node temp=new Node();
+            temp.data=val;
+            temp.next=null;
+            if (size==0)
+            {
+                head=tail=temp;
+
+            }
+            else
+            {
+                tail.next=temp;
+                tail=temp;
+
+            }
+             size++;
+        }
+        public int size()
+        {
+            return size;
+        }
+        public void display()
+        {
+            Node temp=head;
+            while (temp!=null)
+            {
+                System.out.print(temp.data+" ");
+                temp=temp.next;
+            }
+            System.out.println();
+
+        }
+        public void removeFirst()
+        {
+            if (size==0)
+            {
+                System.out.println("List is empty");
+            }
+            else if (size==1)
+            {
+                head=null;
+                tail=null;
+                size=0;
+            }
+            else
+            {
+                head=head.next;
+                size--;
+            }
+        }
+        public int getFirst()
+        {
+            if(size==0)
+            {
+                System.out.println("List is Empty");
+                return -1;
+            }
+            else
+            {
+                return head.data;
+            }
+        }
+        public int getLast()
+        {
+            if(size==0)
+            {
+                System.out.println("List is Empty");
+                return -1;
+            }
+            else
+            {
+                return tail.data;
+            }
+        }
+        public int getAt(int index)
+        {
+            if(size==0)
+            {
+                System.out.println("List is Empty");
+                return -1;
+            }
+            else if(index<0 || index>=size)
+            {
+                System.out.println("Invalid Arguments");
+                return -1;
+            }
+            else
+            {
+                Node temp=head;
+                for (int i=0;i<index;i++)
+                {
+                    temp=temp.next;
+                }
+                return temp.data;
+            }
+        }
+        public void addFirst(int val)
+        {
+            Node temp=new Node();
+            temp.data=val;
+            temp.next=head;
+            head=temp;
+//            if (size==0)
+//            {
+//                tail=temp;
+//            }
+            size++;
+        }
+
+
+    }
+
+    public static void main(String[] args)
+    {
+	    LinkedList ls=new LinkedList();
+	    ls.addLast(10);
+	    ls.addLast(20);
+	    ls.addLast(30);
+	    ls.addLast(40);
+	    ls.addLast(50);
+        // System.out.println("Before Deleting Linked List is:");
+        ls.display();
+//	    ls.removeFirst();
+//        System.out.println("After Deleting Linked List is:");
+//	    ls.display();
+	    int val=ls.getFirst();
+        System.out.println("First Element is:="+val);
+        int val1=ls.getLast();
+        System.out.println("Last Element is:="+val1);
+	    int val2=ls.getAt(1);
+        System.out.println("value at specified index is:="+val2);
+        ls.addFirst(70);
+        ls.display();
+//        int size=ls.size();
+//        System.out.println(size);
+
+    }
+}
