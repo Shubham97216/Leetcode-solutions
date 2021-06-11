@@ -176,6 +176,26 @@ public class Main
                 size--;
             }
         }
+        public void removeAt(int index)
+        {
+            if (index==0)
+                head=tail=null;
+            else if (index<0 || index>=size)
+            {
+                System.out.println("Invalid arguments");
+            }
+            else
+            {
+                Node temp=head;
+                for (int i=0;i<index-1;i++)
+                {
+                    temp=temp.next;
+                }
+                temp.next=temp.next.next;
+                size--;
+
+            }
+        }
         public Node getNodeAt(int index)
         {
             if(size==0)
@@ -262,7 +282,9 @@ public class Main
 //        System.out.println(size);
 //        ls.addAt(300,2);
 //        ls.display();
-        ls.reversePointerIterative();
+        //ls.reversePointerIterative();
+        //ls.display();
+        ls.removeAt(2);
         ls.display();
 //        ls.removeLast();
 //        ls.display();
