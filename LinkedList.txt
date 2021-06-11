@@ -176,6 +176,44 @@ public class Main
                 size--;
             }
         }
+        public Node getNodeAt(int index)
+        {
+            if(size==0)
+            {
+                System.out.println("List is Empty");
+
+            }
+            else if(index<0 || index>=size)
+            {
+                System.out.println("Invalid Arguments");
+            }
+            else
+            {
+                Node temp=head;
+                for (int i=0;i<index;i++)
+                {
+                    temp=temp.next;
+                }
+                return temp;
+            }
+            return null;
+        }
+        public void reverseDataIterative()
+        {
+            int li=0;
+            int ri=size-1;
+
+            while(li<ri)
+            {
+                Node left=getNodeAt(li);
+                Node right=getNodeAt(ri);
+                int temp=left.data;
+                left.data=right.data;
+                right.data=temp;
+                li++;
+                ri--;
+            }
+        }
 
 
 
@@ -207,7 +245,9 @@ public class Main
 //        System.out.println(size);
 //        ls.addAt(300,2);
 //        ls.display();
-        ls.removeLast();
+        ls.reverseDataIterative();
         ls.display();
+//        ls.removeLast();
+//        ls.display();
     }
 }
