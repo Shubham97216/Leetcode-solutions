@@ -214,6 +214,23 @@ public class Main
                 ri--;
             }
         }
+        public void reversePointerIterative()
+        {
+            Node prev=null;
+            Node current=head;
+            while(current!=null)
+            {
+                Node next=current.next;
+                current.next=prev;
+                prev=current;
+                current=next;
+            }
+
+            Node temp=head;
+            head=tail;
+            tail=temp;
+        }
+
 
 
 
@@ -245,7 +262,7 @@ public class Main
 //        System.out.println(size);
 //        ls.addAt(300,2);
 //        ls.display();
-        ls.reverseDataIterative();
+        ls.reversePointerIterative();
         ls.display();
 //        ls.removeLast();
 //        ls.display();
