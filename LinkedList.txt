@@ -1,3 +1,5 @@
+package com.example.test;
+
 public class Main
 {
     public static class LinkedList
@@ -11,6 +13,19 @@ public class Main
         Node head;
         Node tail;
         int size;
+
+        public void addFirst(int val)
+        {
+            Node temp=new Node();
+            temp.data=val;
+            temp.next=head;
+            head=temp;
+            if (size==0)
+            {
+                tail=temp;
+            }
+            size++;
+        }
 
         public void addLast(int val)
         {
@@ -109,18 +124,21 @@ public class Main
                 return temp.data;
             }
         }
-        public void addFirst(int val)
+        public void addAt(int val,int index)
         {
-            Node temp=new Node();
-            temp.data=val;
-            temp.next=head;
-            head=temp;
-//            if (size==0)
-//            {
-//                tail=temp;
-//            }
+            Node node=new Node();
+            node.data=val;
+            Node temp=head;
+            for(int i=0;i<index-1;i++)
+            {
+                temp=temp.next;
+            }
+            node.next=temp.next;
+            temp.next=node;
             size++;
         }
+
+
 
 
     }
@@ -144,10 +162,12 @@ public class Main
         System.out.println("Last Element is:="+val1);
 	    int val2=ls.getAt(1);
         System.out.println("value at specified index is:="+val2);
-        ls.addFirst(70);
-        ls.display();
+//        ls.addFirst(70);
+//        ls.display();
 //        int size=ls.size();
 //        System.out.println(size);
+        ls.addAt(300,2);
+        ls.display();
 
     }
 }
