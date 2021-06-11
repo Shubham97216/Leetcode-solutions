@@ -129,12 +129,28 @@ public class Main
             Node node=new Node();
             node.data=val;
             Node temp=head;
-            for(int i=0;i<index-1;i++)
+            if(index==0)
             {
-                temp=temp.next;
+                addFirst(val);
             }
-            node.next=temp.next;
-            temp.next=node;
+            else if(index>size && index<0)
+            {
+                System.out.println("Invalid Index Entered:");
+            }
+            else if (index==size)
+            {
+                addLast(val);
+            }
+            else
+            {
+                for(int i=0;i<index-1;i++)
+                {
+                    temp=temp.next;
+                }
+                node.next=temp.next;
+                temp.next=node;
+            }
+
             size++;
         }
 
